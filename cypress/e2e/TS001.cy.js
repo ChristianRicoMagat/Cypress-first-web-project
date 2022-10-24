@@ -34,7 +34,7 @@ describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function(){
 
 //TC002 - Verify if user can update contact information under Basic Info page
 
-    it('TC002 - Verify Successful Login using valid email and password', function(){
+    it('TC002 - Verify if user can update contact information under Basic Info page', function(){
 
         VisitPage.myApp()
 
@@ -134,9 +134,9 @@ describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function(){
 
     })
 
-//TC004 - Verify if user can add other languages under 'Languages' page
+//TC004 - Verify if user can edit primary language preference under 'Languages' page
     
-    it('TC004 - Verify if user can add other languages under Languages page', function(){
+    it('TC004 - Verify if user can edit primary language preference under Languages page', function(){
 
         VisitPage.myApp()
 
@@ -232,61 +232,9 @@ describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function(){
         HomePage.returnToHome()
     })
 
-//TC005 - Verify if user can add other languages under 'Languages' page
-
-    it('TC005 - Verify if user can add other languages under Languages page', function () {
-
-        VisitPage.myApp()
-
-        //login with valid credentials
-        LoginPage.enterEmail('christianrico.magat@gmail.com')
-        LoginPage.clickContinue().click()
-        LoginPage.enterPassword('!Aaaa12345')
-        LoginPage.clickContinue().click()
-
-        //Assertion: Verify user is directed to home page dashboard
-        HomePage.returnToHome()
-
-        //Click the user avatar
-        HomePage.userAvatar().click()
-
-        //Click My Profile
-        HomePage.myProfile().click()
-        //Assertion: User must be directed to basic information page
-
-        //LanguagesPage.languagesPage()
-        LanguagesPage.languagesPage().click()
-
-        //Assertion: User should be directed to Languages Page
-        VisitPage.page_languages()
-
-        //Add other languages
-        LanguagesPage.addOtherLanguage().click()
-        LanguagesPage.addLanguageTextbox().click().type(randomLanguage())
-
-        //Function to randomly select a value from a static array
-        function randomLanguage(langArray) {
-            var langArray = ['Afa{enter}', 'Afr{enter}', 'Agh{enter}', 'Aka{enter}', 'alb{enter}', 'als{enter}', 'amh{enter}', 'ara{enter}', 'ben{enter}', 'bem{enter}', 'eng{enter}', 'chi{enter}', 'fre{enter}']
-            return langArray[Math.floor(Math.random() * langArray.length)]
-        }
-
-        //Adding prficiency level
-        LanguagesPage.addLanguageProficiencyTextbox().type(proficiencyLevel())
-
-        function proficiencyLevel(level) {
-            var level = ['Nat{enter}', 'Ful{enter}', 'Pro{enter}', 'Lim{enter}']
-            return level[Math.floor(Math.random() * level.length)]
-        }
-        //Save preference
-        LanguagesPage.saveOtherLang().click()
-
-        //Return to Home
-        HomePage.returnToHome()
-    })
-
 //TC006 - Verify if user can successfully sign out of the application after successful profile update
 
-    it('Verify if user can successfully sign out of the application after successful profile update', function(){
+    it('TC006 - Verify if user can successfully sign out of the application after successful profile update', function(){
 
         VisitPage.myApp()
 
