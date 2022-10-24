@@ -1,9 +1,9 @@
 /// <reference types="cypress"/>
 
-import {visitPage} from "./pages/visitPage.cy"
-import {loginPage} from "./pages/loginPage.cy"
-import {homePage} from "./pages/homePage.cy"
-import {basicInfo} from "./pages/basicInfo.cy"
+import { visitPage } from "./pages/visitPage.cy"
+import { loginPage } from "./pages/loginPage.cy"
+import { homePage } from "./pages/homePage.cy"
+import { basicInfo } from "./pages/basicInfo.cy"
 import { languagesPage } from "./pages/languagesPage.cy"
 
 const VisitPage = new visitPage()
@@ -12,11 +12,11 @@ const HomePage = new homePage()
 const BasicInfo = new basicInfo()
 const LanguagesPage = new languagesPage()
 
-describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function(){
+describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function () {
 
-//TC001 - Verify Successful Login using valid email and password
+    //TC001 - Verify Successful Login using valid email and password
 
-    it('TC001 - Verify Successful Login using valid email and password', function(){
+    it('TC001 - Verify Successful Login using valid email and password', function () {
 
         //Access the application URL
         VisitPage.myApp()
@@ -26,15 +26,15 @@ describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function(){
         LoginPage.clickContinue().click()
         LoginPage.enterPassword('!Aaaa12345')
         LoginPage.clickContinue().click()
-        
+
         //Assertion: Verify user is directed to home page dashboard
         HomePage.returnToHome()
 
     })
 
-//TC002 - Verify if user can update contact information under Basic Info page
+    //TC002 - Verify if user can update contact information under Basic Info page
 
-    it('TC002 - Verify if user can update contact information under Basic Info page', function(){
+    it('TC002 - Verify if user can update contact information under Basic Info page', function () {
 
         VisitPage.myApp()
 
@@ -43,7 +43,7 @@ describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function(){
         LoginPage.clickContinue().click()
         LoginPage.enterPassword('!Aaaa12345')
         LoginPage.clickContinue().click()
-        
+
         //Assertion: Verify user is directed to home page dashboard
         HomePage.returnToHome()
 
@@ -59,7 +59,7 @@ describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function(){
 
         //Assertion: save button should be disabled prior updating any text fields
         BasicInfo.saveContactInfo().should('be.disabled')
-    
+
         //Select, clear, and edit Last Name with random characters
         BasicInfo.editLastName().click().clear().type(userID_Alpha())
 
@@ -67,12 +67,12 @@ describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function(){
         function userID_Alpha() {
             var text = "";
             var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-        
+
             for (var i = 0; i < 4; i++)
-              text += possible.charAt(Math.floor(Math.random() * possible.length));
-        
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+
             return text;
-          }
+        }
 
         //validate if 'save' button is enabled. If yes, click.
         BasicInfo.saveContactInfo().should('be.enabled').click()
@@ -80,12 +80,12 @@ describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function(){
         //Retun to Home
         //Assertion: Verify user is directed to home page dashboard
         HomePage.returnToHome()
-        
+
     })
 
-//TC003 - Verify if user can update location information under 'Basic Info' page
-    
-    it('TC003 - Verify if user can update location information under Basic Info page', function(){
+    //TC003 - Verify if user can update location information under 'Basic Info' page
+
+    it('TC003 - Verify if user can update location information under Basic Info page', function () {
 
         VisitPage.myApp()
 
@@ -94,7 +94,7 @@ describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function(){
         LoginPage.clickContinue().click()
         LoginPage.enterPassword('!Aaaa12345')
         LoginPage.clickContinue().click()
-        
+
         //Assertion: Verify user is directed to home page dashboard
         HomePage.returnToHome()
 
@@ -110,7 +110,7 @@ describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function(){
 
         //Assertion: save button should be disabled prior updating any text fields
         BasicInfo.saveLocationInfo().should('be.disabled')
-    
+
         //Select, clear, and edit Last Name with random characters
         BasicInfo.editPostalCode().click().clear().type(userID_Alpha())
 
@@ -118,12 +118,12 @@ describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function(){
         function userID_Alpha() {
             var text = "";
             var possible = "0123456789";
-        
+
             for (var i = 0; i < 4; i++)
-              text += possible.charAt(Math.floor(Math.random() * possible.length));
-        
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+
             return text;
-          }
+        }
 
         //validate if 'save' button is enabled. If yes, click.
         BasicInfo.saveLocationInfo().should('be.enabled').click()
@@ -134,9 +134,9 @@ describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function(){
 
     })
 
-//TC004 - Verify if user can edit primary language preference under 'Languages' page
-    
-    it('TC004 - Verify if user can edit primary language preference under Languages page', function(){
+    //TC004 - Verify if user can edit primary language preference under 'Languages' page
+
+    it('TC004 - Verify if user can edit primary language preference under Languages page', function () {
 
         VisitPage.myApp()
 
@@ -145,7 +145,7 @@ describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function(){
         LoginPage.clickContinue().click()
         LoginPage.enterPassword('!Aaaa12345')
         LoginPage.clickContinue().click()
-        
+
         //Assertion: Verify user is directed to home page dashboard
         HomePage.returnToHome()
 
@@ -168,8 +168,8 @@ describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function(){
 
         //function to randomly select a value from a static array
         function randomLanguage(langArray) {
-            var langArray = ['Afa{enter}','Afr{enter}','Agh{enter}','Aka{enter}','alb{enter}','als{enter}','amh{enter}','ara{enter}','ben{enter}','bem{enter}','eng{enter}','chi{enter}','fre{enter}']
-            return langArray [Math.floor(Math.random()*langArray.length)]
+            var langArray = ['Afa{enter}', 'Afr{enter}', 'Agh{enter}', 'Aka{enter}', 'alb{enter}', 'als{enter}', 'amh{enter}', 'ara{enter}', 'ben{enter}', 'bem{enter}', 'cro{enter}', 'cze{enter}', 'eng{enter}', 'chin{enter}', 'fre{enter}']
+            return langArray[Math.floor(Math.random() * langArray.length)]
         }
         //Save new primary language
         LanguagesPage.savePrimaryLang().click()
@@ -180,9 +180,9 @@ describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function(){
 
     })
 
-//TC005 - Verify if user can add other languages under 'Languages' page
+    //TC005 - Verify if user can add other languages under 'Languages' page
 
-    it('TC005 - Verify if user can add other languages under Languages page', function(){
+    it('TC005 - Verify if user can add other languages under Languages page', function () {
 
         VisitPage.myApp()
 
@@ -191,7 +191,7 @@ describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function(){
         LoginPage.clickContinue().click()
         LoginPage.enterPassword('!Aaaa12345')
         LoginPage.clickContinue().click()
-        
+
         //Assertion: Verify user is directed to home page dashboard
         HomePage.returnToHome()
 
@@ -214,27 +214,27 @@ describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function(){
 
         //Function to randomly select a value from a static array
         function randomLanguage(langArray) {
-            var langArray = ['Afa{enter}','Afr{enter}','Agh{enter}','Aka{enter}','alb{enter}','als{enter}','amh{enter}','ara{enter}','ben{enter}','bem{enter}','eng{enter}','chi{enter}','fre{enter}']
-            return langArray [Math.floor(Math.random()*langArray.length)]
+            var langArray = ['Afa{enter}', 'Afr{enter}', 'Agh{enter}', 'Aka{enter}', 'alb{enter}', 'als{enter}', 'amh{enter}', 'ara{enter}', 'ben{enter}', 'bem{enter}', 'cro{enter}', 'cze{enter}', 'eng{enter}', 'chin{enter}', 'fre{enter}']
+            return langArray[Math.floor(Math.random() * langArray.length)]
         }
 
-        //Adding prficiency level
+        //Adding proficiency level
         LanguagesPage.addLanguageProficiencyTextbox().type(proficiencyLevel())
 
         function proficiencyLevel(level) {
             var level = ['Nat{enter}', 'Ful{enter}', 'Pro{enter}', 'Lim{enter}']
-            return level [Math.floor(Math.random()*level.length)]
+            return level[Math.floor(Math.random() * level.length)]
         }
         //Save preference
-        LanguagesPage.saveOtherLang().click()
+        LanguagesPage.saveOtherLang().click({ force: true })
 
         //Return to Home
         HomePage.returnToHome()
     })
 
-//TC006 - Verify if user can successfully sign out of the application after successful profile update
+    //TC006 - Verify if user can successfully sign out of the application after successful profile update
 
-    it('TC006 - Verify if user can successfully sign out of the application after successful profile update', function(){
+    it('TC006 - Verify if user can successfully sign out of the application after successful profile update', function () {
 
         VisitPage.myApp()
 
@@ -243,7 +243,7 @@ describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function(){
         LoginPage.clickContinue().click()
         LoginPage.enterPassword('!Aaaa12345')
         LoginPage.clickContinue().click()
-        
+
         //Assertion: Verify user is directed to home page dashboard
         HomePage.returnToHome()
 
@@ -258,7 +258,7 @@ describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function(){
 
         //Assertion: save button should be disabled prior updating any text fields
         BasicInfo.saveContactInfo().should('be.disabled')
-    
+
         //Select, clear, and edit Last Name with random characters
         BasicInfo.editLastName().click().clear().type(userID_Alpha())
 
@@ -266,12 +266,12 @@ describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function(){
         function userID_Alpha() {
             var text = "";
             var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-        
+
             for (var i = 0; i < 4; i++)
-              text += possible.charAt(Math.floor(Math.random() * possible.length));
-        
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+
             return text;
-          }
+        }
 
         //validate if 'save' button is enabled. If yes, click.
         BasicInfo.saveContactInfo().should('be.enabled').click()
@@ -281,7 +281,7 @@ describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function(){
 
         //Assertion: save button should be disabled prior updating any text fields
         BasicInfo.saveLocationInfo().should('be.disabled')
-    
+
         //Select, clear, and edit Last Name with random characters
         BasicInfo.editPostalCode().click().clear().type(userID_Alpha())
 
@@ -289,49 +289,56 @@ describe('SUCCESSFUL PROFILE UPDATE OF A VALID USER', function(){
         function userID_Alpha() {
             var text = "";
             var possible = "0123456789";
-        
+
             for (var i = 0; i < 4; i++)
-              text += possible.charAt(Math.floor(Math.random() * possible.length));
-        
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+
             return text;
-          }
+        }
 
         //validate if 'save' button is enabled. If yes, click.
         BasicInfo.saveLocationInfo().should('be.enabled').click()
 
-         //LanguagesPage.languagesPage()
-         LanguagesPage.languagesPage().click()
+        //LanguagesPage.languagesPage()
+        LanguagesPage.languagesPage().click()
 
-         //Assertion: User should be directed to Languages Page
-         VisitPage.page_languages()
- 
-         //Add other languages
-         LanguagesPage.addOtherLanguage().click()
-         LanguagesPage.addLanguageTextbox().click().type(randomLanguage())
- 
-         //Function to randomly select a value from a static array
-         function randomLanguage(langArray) {
-             var langArray = ['Afa{enter}','Afr{enter}','Agh{enter}','Aka{enter}','alb{enter}','als{enter}','amh{enter}','ara{enter}','ben{enter}','bem{enter}','eng{enter}','chi{enter}','fre{enter}']
-             return langArray [Math.floor(Math.random()*langArray.length)]
-         }
- 
-         //Adding prficiency level
-         LanguagesPage.addLanguageProficiencyTextbox().type(proficiencyLevel())
- 
-         function proficiencyLevel(level) {
-             var level = ['Nat{enter}', 'Ful{enter}', 'Pro{enter}', 'Lim{enter}']
-             return level [Math.floor(Math.random()*level.length)]
-         }
-         //Save preference
-         LanguagesPage.saveOtherLang().click({force:true})
+        //Assertion: User should be directed to Languages Page
+        VisitPage.page_languages()
 
-         //Click the user avatar
+        //Edit primary Language
+        LanguagesPage.editPrimaryLanguage().click()
+        LanguagesPage.languageTextbox().click().type(randomLanguage())
+
+        //Save new primary language
+        LanguagesPage.savePrimaryLang().click()
+            
+        //Add other languages
+        LanguagesPage.addOtherLanguage().click()
+        LanguagesPage.addLanguageTextbox().click().type(randomLanguage())
+
+        //Function to randomly select a value from a static array
+        function randomLanguage(langArray) {
+            var langArray = ['Afa{enter}', 'Afr{enter}', 'Agh{enter}', 'Aka{enter}', 'alb{enter}', 'als{enter}', 'amh{enter}', 'ara{enter}', 'ben{enter}', 'bem{enter}', 'cro{enter}', 'cze{enter}', 'eng{enter}', 'chin{enter}', 'fre{enter}']
+            return langArray[Math.floor(Math.random() * langArray.length)]
+        }
+
+        //Adding proficiency level
+        LanguagesPage.addLanguageProficiencyTextbox().type(proficiencyLevel())
+
+        function proficiencyLevel(level) {
+            var level = ['Nat{enter}', 'Ful{enter}', 'Pro{enter}', 'Lim{enter}']
+            return level[Math.floor(Math.random() * level.length)]
+        }
+        //Save preference
+        LanguagesPage.saveOtherLang().click({ force: true })
+
+        //Click the user avatar
         HomePage.userAvatar().click()
         HomePage.signOut().click()
-        
+
         //Assertion: Validate user is directed to Telus log in page
         VisitPage.loginPage()
-        
+
 
     })
 
